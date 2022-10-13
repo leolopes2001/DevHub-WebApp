@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+import { useContext } from 'react';
 import Img from '../../assets/Logo.svg';
 
 import { Logo } from '../../components/Logo/style';
@@ -15,13 +15,14 @@ import { ContainerLogin } from '../../layout/Containers/style';
 import LoginForm from '../../layout/Form/LoginForm';
 
 import schema from '../../validations/loginUser';
-import api from '../../service/api';
 import { LoadingBack } from '../../layout/Background/LoadingBack/LoadingBack';
+import { AuthContext } from '../../contexts/AuthContext';
 
-const LoginPage = ({ setUser }) => {
-  const navigate = useNavigate();
+const LoginPage = () => {
+  const { loginUser, isLoading } = useContext(AuthContext);
 
-  const [isLoading, setLoading] = useState(false);
+  console.log(isLoading);
+
   const {
     register,
     handleSubmit,
@@ -30,36 +31,12 @@ const LoginPage = ({ setUser }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (formData) => {
-    setLoading(true);
-    api
-      .post('/sessions', formData)
-      .then((res) => {
-        window.localStorage.clear();
-
-        window.localStorage.setItem('userToken', res.data.token);
-        window.localStorage.setItem('userId', res.data.user.id);
-
-        setUser(res.data);
-        navigate('/');
-        setLoading(() => {
-          setInterval(() => {
-            setLoading(false);
-          }, 500);
-        });
-        toast.success('Login realizado com sucesso!');
-      })
-      .catch(() => {
-        setLoading(false);
-        toast.error('Algo deu errado, tente novamente!');
-      });
-  };
   return (
     <Background>
       <motion.div
-        initial={{ opacity: 0, x: '-03%'}}
-        animate={{ opacity: 1, x: '0%'}}
-        exit={{ opacity: 0, x: '0%'}}
+        initial={{ opacity: 0, x: '-03%' }}
+        animate={{ opacity: 1, x: '0%' }}
+        exit={{ opacity: 0, x: '0%' }}
         transition={{ duration: 0.6 }}
       >
         <ContainerLogin>
@@ -69,8 +46,8 @@ const LoginPage = ({ setUser }) => {
 
           <LoginForm
             variant='login'
+            loginUser={loginUser}
             handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
             register={register}
             errors={errors}
           />

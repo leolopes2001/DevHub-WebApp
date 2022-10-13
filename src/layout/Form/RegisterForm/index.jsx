@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable arrow-body-style */
-/* eslint-disable import/no-unresolved */
 
 import { TitleStyled } from '../../../components/Title';
 import { LabelStyled, TextStyled } from '../../../components/Text';
@@ -10,10 +8,10 @@ import { ButtonStyled } from '../../../components/Button';
 import { SelectBox } from './style';
 
 export const RegisterForm = (props) => {
-    const {variant,handleSubmit,onSubmit,errors,register} = props
+  const { variant, handleSubmit, registerUser, errors, register } = props;
 
   return (
-    <Form variant={variant} onSubmit={handleSubmit(onSubmit)}>
+    <Form variant={variant} onSubmit={handleSubmit(registerUser)}>
       <TitleStyled variant='title1' tag='h3'>
         Crie sua conta
       </TitleStyled>

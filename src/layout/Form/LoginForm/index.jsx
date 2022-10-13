@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 import { TitleStyled } from '../../../components/Title';
@@ -10,8 +9,8 @@ import { TextStyled } from '../../../components/Text';
 
 import { BoxInputPassword } from './InputPassword';
 
-const LoginForm = ({ variant, handleSubmit, onSubmit, errors, register }) => (
-  <Form variant={variant} onSubmit={handleSubmit(onSubmit)}>
+const LoginForm = ({ variant, handleSubmit, loginUser, errors, register }) => (
+  <Form variant={variant} onSubmit={handleSubmit(loginUser)}>
     <TitleStyled variant='title1' tag='h3'>
       Login
     </TitleStyled>

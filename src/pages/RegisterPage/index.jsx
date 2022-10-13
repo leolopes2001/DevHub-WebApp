@@ -1,9 +1,11 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
-import { useNavigate } from 'react-router-dom';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify';
+
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
 import { Logo } from '../../components/Logo/style';
 import ImgLogo from '../../assets/Logo.svg';
 
@@ -13,11 +15,12 @@ import { Background } from '../../layout/Background/DefaultBack/style';
 import { ContainerRegister } from '../../layout/Containers/style';
 
 import schema from '../../validations/registerUser';
-import api from '../../service/api';
+
 import { RegisterForm } from '../../layout/Form/RegisterForm';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const RegisterPage = () => {
-  const navigate = useNavigate();
+  const { registerUser } = useContext(AuthContext);
 
   const {
     register,
@@ -26,18 +29,6 @@ const RegisterPage = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const onSubmit = (formData) => {
-    api
-      .post('/users', formData)
-      .then(() => {
-        navigate('/login');
-        toast.success('Registro realizado com suceeso!');
-      })
-      .catch(({ response: { data } }) => {
-        toast.error(data.message);
-      });
-  };
 
   return (
     <Background>
@@ -56,7 +47,7 @@ const RegisterPage = () => {
           <RegisterForm
             variant='register'
             handleSubmit={handleSubmit}
-            onSubmit={onSubmit}
+            registerUser={registerUser}
             errors={errors}
             register={register}
           />

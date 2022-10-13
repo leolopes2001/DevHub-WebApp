@@ -12,6 +12,7 @@ export const ButtonType = {
 
     height: 40.11px;
 
+    
     background: #212529;
   `,
   login: css`
@@ -55,12 +56,45 @@ export const ButtonType = {
     }
   `,
   addTech: css`
-    width: 32px;
-    height: 32px;
-    background: #212529;
+    min-width: 100%;
+    min-height: 48px;
+
+    background: #ff577f;
     border-radius: 4px;
     color: #ffff;
-    font-size: 1.6rem;
+    border: 1.2182px solid #ff577f;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+  `,
+
+  deleteTech: css`
+    width: 98px;
+    min-height: 48px;
+
+    background: #868e96;
+
+    border: 1.2182px solid #868e96;
+    border-radius: 4px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+
+    color: #ffffff;
+  `,
+
+  btnOpenModal: css`
+    min-width: 32px;
+    min-height: 32px;
+    background: #212529;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    font-size: 1.4rem;
   `,
 };
 
@@ -76,5 +110,7 @@ export const ButtonStyled = styled.button`
   background-color: transparent;
   border-radius: 4px;
 
+
   ${({ variant }) => ButtonType[variant || 'default']}
+  
 `;

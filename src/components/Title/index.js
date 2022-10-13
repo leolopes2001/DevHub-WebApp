@@ -8,6 +8,13 @@ const TitleVariant = {
     line-height: 28px;
     color: #f8f9fa;
   `,
+
+  title2: css`
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #F8F9FA;
+  `,
 };
 
 export const TitleStyled = styled(baseTitle)`
