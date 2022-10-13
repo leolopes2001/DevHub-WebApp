@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import { TitleStyled } from '../../components/Title';
-import { ButtonStyled } from '../../components/Button';
-import { LinkStyled } from '../../components/Link';
-import { Form } from './style';
-import { BoxInput } from '../BoxInput';
-import { TextStyled } from '../../components/Text';
+import { TitleStyled } from '../../../components/Title';
+import { ButtonStyled } from '../../../components/Button';
+import { LinkStyled } from '../../../components/Link';
+import { Form } from '../style';
+import { BoxInput } from '../../BoxInput';
+import { TextStyled } from '../../../components/Text';
 
-import { BoxInputPassword } from '../../pages/LoginPage/InputPassword';
+import { BoxInputPassword } from './InputPassword';
 
 const LoginForm = ({ variant, handleSubmit, onSubmit, errors, register }) => (
   <Form variant={variant} onSubmit={handleSubmit(onSubmit)}>

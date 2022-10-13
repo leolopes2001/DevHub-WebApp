@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-import { Background } from '../style';
+import { Background } from '../DefaultBack/style';
 
 const rotating = keyframes`
     from{

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
-import { LabelStyled } from '../../../components/Text';
+import { LabelStyled } from '../../../../components/Text';
 import { BoxStyled, Input, DivEye } from './style';
 
 export const BoxInputPassword = (props) => {

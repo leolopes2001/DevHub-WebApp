@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { AnimatePresence } from 'framer-motion';
 import LandingPage from '../pages/LandingPage';
 import LoginPage from '../pages/LoginPage';
 import HomePage from '../pages/HomePage';
@@ -25,31 +26,35 @@ const Authenticator = () => {
 
   if (!isAuthenticated) {
     return (
-      <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route
-          path='login'
-          element={
-            <LoginPage
-              setUser={setUser}
-              setAuthentication={setAuthentication}
-            />
-          }
-        />
-        <Route path='register' element={<RegisterPage />} />
-        <Route path='*' element={<Navigate to='/' />} />
-      </Routes>
+      <AnimatePresence>
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route
+            path='login'
+            element={
+              <LoginPage
+                setUser={setUser}
+                setAuthentication={setAuthentication}
+              />
+            }
+          />
+          <Route path='register' element={<RegisterPage />} />
+          <Route path='*' element={<Navigate to='/' />} />
+        </Routes>
+      </AnimatePresence>
     );
   }
 
   return (
-    <Routes>
-      <Route
-        path='/'
-        element={<HomePage setAuthentication={setAuthentication} />}
-      />
-      <Route path='*' element={<Navigate to='/' />} />
-    </Routes>
+    <AnimatePresence>
+      <Routes>
+        <Route
+          path='/'
+          element={<HomePage setAuthentication={setAuthentication} />}
+        />
+        <Route path='*' element={<Navigate to='/' />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 
