@@ -7,6 +7,7 @@ const TitleVariant = {
     font-size: 18px;
     line-height: 28px;
     color: #f8f9fa;
+    margin-bottom: 20px;
   `,
 
   title2: css`
@@ -21,6 +22,6 @@ export const TitleStyled = styled(baseTitle)`
   font-family: 'Inter';
   font-style: normal;
   text-align: center;
-  margin-bottom: 20px;
+ 
   ${({ variant }) => TitleVariant[variant]}
 `;

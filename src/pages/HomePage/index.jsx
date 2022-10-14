@@ -3,8 +3,8 @@
 /* eslint-disable react/prop-types */
 
 import { MdOutlineAdd } from 'react-icons/md';
-import { motion } from 'framer-motion';
-import { useContext, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useContext, useState, useEffect } from 'react';
 import { ButtonStyled } from '../../components/Button';
 import Logo from '../../assets/Logo.svg';
 import {
@@ -24,14 +24,31 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { TechList } from '../../layout/TechList';
 import { ModalEditTech } from '../../layout/modal/modalEditTech';
 import { ModalAddTech } from '../../layout/modal/modalAddTech';
+import api from '../../service/api';
 
 const HomePage = () => {
-  const { logout, user } = useContext(AuthContext);
+  const { logout, user, setUser } = useContext(AuthContext);
 
-  console.log(user);
-  const [contentEdit, setContentEdit] = useState(null);
+  const [techList, setTechList] = useState([]);
 
-  const [isActiveModalAdd, setIsActiveModalAdd] = useState(null);
+  const [isActiveModalAdd, setIsActiveModalAdd] = useState(false);
+
+  const [contentModal, setContentModal] = useState(false);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const { data } = await api.get('/profile');
+
+        setTechList(data.techs);
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    loadData();
+  }, []);
 
   return (
     <Background>
@@ -44,9 +61,7 @@ const HomePage = () => {
         <Header>
           <ContainerHeader>
             <img src={Logo} alt='Logo site' />
-            <ButtonStyled  onClick={() => logout()}>
-              Sair
-            </ButtonStyled>
+            <ButtonStyled onClick={() => logout()}>Sair</ButtonStyled>
           </ContainerHeader>
         </Header>
 
@@ -75,13 +90,21 @@ const HomePage = () => {
               </ButtonStyled>
             </div>
 
-            {isActiveModalAdd && (
-              <ModalAddTech setIsActiveModalAdd={setIsActiveModalAdd} />
+            <ModalAddTech
+              isActiveModalAdd={isActiveModalAdd}
+              setIsActiveModalAdd={setIsActiveModalAdd}
+              setTechList={setTechList}
+            />
+
+            {contentModal && (
+              <ModalEditTech
+                contentModal={contentModal}
+                setContentModal={setContentModal}
+                setTechList={setTechList}
+              />
             )}
 
-            {contentEdit && <ModalEditTech />}
-
-            <TechList />
+            <TechList techList={techList} setContentModal={setContentModal} />
           </ContainerMain>
         </main>
       </motion.div>

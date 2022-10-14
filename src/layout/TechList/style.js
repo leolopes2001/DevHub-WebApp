@@ -17,15 +17,3 @@ export const ListStyled = styled.ul`
   overflow-x: scroll;
 `;
 
-export const TechItem = styled.li`
-  width: 100%;
-  width: 100%;
-  min-height: 49px;
-  cursor: pointer;
-  background: #121214;
-  border-radius: 4px;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;

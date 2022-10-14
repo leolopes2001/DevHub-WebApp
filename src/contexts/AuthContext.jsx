@@ -21,6 +21,8 @@ const AuthProvider = ({ children }) => {
     if (!userToken || !userId) {
       setAuthentication(false);
     } else {
+
+      api.defaults.headers.authorization = `Bearer ${userToken}`
       setAuthentication(true);
     }
   }, []);
@@ -28,6 +30,7 @@ const AuthProvider = ({ children }) => {
   const loginUser = async (formData) => {
     setIsLoading(true);
 
+    
     await api
       .post('/sessions', formData)
       .then((res) => {
@@ -36,6 +39,7 @@ const AuthProvider = ({ children }) => {
         window.localStorage.setItem('userToken', res.data.token);
         window.localStorage.setItem('userId', res.data.user.id);
 
+        api.defaults.headers.authorization = `Bearer ${res.data.token}`
         setUser(res.data.user);
         setAuthentication(true);
 
@@ -76,11 +80,14 @@ const AuthProvider = ({ children }) => {
         isLoading,
         logout,
         user,
+        setUser
       }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
+
+
 
 export default AuthProvider;

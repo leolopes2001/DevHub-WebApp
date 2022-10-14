@@ -27,7 +27,7 @@ export const TextVariant = {
     text-align: center;
   `,
 
-  text4: css``,
+  
 };
 
 export const TextStyled = styled.p`

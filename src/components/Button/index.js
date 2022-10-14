@@ -12,7 +12,6 @@ export const ButtonType = {
 
     height: 40.11px;
 
-    
     background: #212529;
   `,
   login: css`
@@ -96,6 +95,32 @@ export const ButtonType = {
     color: #ffff;
     font-size: 1.4rem;
   `,
+
+  btnCloseModal: css`
+    background-color: transparent;
+    color: white;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    color: #868e96;
+  `,
+  saveChange: css`
+    width: 100%;
+    max-width: 204px;
+    min-height: 48px;
+
+    background: #ff577f;
+    border-radius: 4px;
+    color: #ffff;
+    border: 1.2182px solid #ff577f;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+
+    
+  `,
 };
 
 export const ButtonStyled = styled.button`
@@ -110,7 +135,5 @@ export const ButtonStyled = styled.button`
   background-color: transparent;
   border-radius: 4px;
 
-
   ${({ variant }) => ButtonType[variant || 'default']}
-  
 `;

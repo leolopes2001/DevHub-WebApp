@@ -21,7 +21,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 const LoginPage = () => {
   const { loginUser, isLoading } = useContext(AuthContext);
 
-  console.log(isLoading);
+
 
   const {
     register,
