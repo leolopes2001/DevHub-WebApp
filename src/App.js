@@ -1,14 +1,14 @@
 import { ToastContainer } from 'react-toastify';
-import { useContext } from 'react';
+
 import GlobalStyle from './styles/globalStyle';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { AuthContext } from './contexts/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 
 import PublicRoutes from './routes/publicRoutes';
 import PrivateRoutes from './routes/privateRoutes';
 
 const App = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useAuth();
 
   return (
     <>

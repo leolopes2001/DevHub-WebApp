@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/prop-types */
 
 import { MdOutlineAdd } from 'react-icons/md';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useContext, useState, useEffect } from 'react';
-import { ButtonStyled } from '../../components/Button';
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { ButtonStyled } from '../../components/generics/Button';
 import Logo from '../../assets/Logo.svg';
 import {
   ContainerProfile,
@@ -14,20 +12,19 @@ import {
   Header,
   SectionProfile,
 } from './style';
-
+import { ModalAddTech } from '../../components/layout/modal/modalAddTech';
+import { ModalEditTech } from '../../components/layout/modal/modalEditTech';
 import { Background } from '../../layout/Background/DefaultBack/style';
 
-import { TitleStyled } from '../../components/Title';
-import { TextStyled } from '../../components/Text';
+import { TitleStyled } from '../../components/generics/Title';
+import { TextStyled } from '../../components/generics/Text';
 
-import { AuthContext } from '../../contexts/AuthContext';
-import { TechList } from '../../layout/TechList';
-import { ModalEditTech } from '../../layout/modal/modalEditTech';
-import { ModalAddTech } from '../../layout/modal/modalAddTech';
+import { useAuth } from '../../contexts/AuthContext';
+import { TechList } from '../../components/layout/TechList';
 import api from '../../service/api';
 
 const HomePage = () => {
-  const { logout, user, setUser } = useContext(AuthContext);
+  const { logout, user, setUser } = useAuth();
 
   const [techList, setTechList] = useState([]);
 
@@ -96,13 +93,11 @@ const HomePage = () => {
               setTechList={setTechList}
             />
 
-            {contentModal && (
-              <ModalEditTech
-                contentModal={contentModal}
-                setContentModal={setContentModal}
-                setTechList={setTechList}
-              />
-            )}
+            <ModalEditTech
+              contentModal={contentModal}
+              setContentModal={setContentModal}
+              setTechList={setTechList}
+            />
 
             <TechList techList={techList} setContentModal={setContentModal} />
           </ContainerMain>

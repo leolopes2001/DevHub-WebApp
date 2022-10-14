@@ -3,7 +3,7 @@ import Logo from '../../assets/Logo.svg';
 import { Background } from '../../layout/Background/DefaultBack/style';
 import Welcome from '../../assets/welcome.svg';
 import { DivImg, DivTitle, Main } from './style';
-import { LinkStyled } from '../../components/Link';
+import { LinkStyled } from '../../components/generics/Link';
 
 const LandingPage = () => (
   <Background>

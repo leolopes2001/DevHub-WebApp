@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { InputStyled } from '../../components/Input/style';
-import { LabelStyled } from '../../components/Text';
+import { InputStyled } from '../../generics/Input/style';
+import { LabelStyled } from '../../generics/Text';
 import { BoxStyled } from './style';
 
 export const BoxInput = (props) => {

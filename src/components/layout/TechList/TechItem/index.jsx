@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import { TextStyled } from '../../../components/Text';
-import { TitleStyled } from '../../../components/Title';
+import { TextStyled } from '../../../generics/Text';
+import { TitleStyled } from '../../../generics/Title';
 import { LiStyled } from './style';
 
 export const TechItem = ({ setContentModal, id, title, status }) => (

@@ -5,23 +5,20 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { motion } from 'framer-motion';
 
-import { useContext } from 'react';
 import Img from '../../assets/Logo.svg';
 
-import { Logo } from '../../components/Logo/style';
+import { Logo } from '../../components/generics/Logo/style';
 import { Background } from '../../layout/Background/DefaultBack/style';
 import { ContainerLogin } from '../../layout/Containers/style';
 
-import LoginForm from '../../layout/Form/LoginForm';
+import LoginForm from '../../components/layout/Form/LoginForm';
 
 import schema from '../../validations/loginUser';
 import { LoadingBack } from '../../layout/Background/LoadingBack/LoadingBack';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 const LoginPage = () => {
-  const { loginUser, isLoading } = useContext(AuthContext);
-
-
+  const { loginUser, isLoading } = useAuth();
 
   const {
     register,

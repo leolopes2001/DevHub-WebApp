@@ -5,22 +5,22 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { motion } from 'framer-motion';
-import { useContext } from 'react';
-import { Logo } from '../../components/Logo/style';
+
+import { Logo } from '../../components/generics/Logo/style';
 import ImgLogo from '../../assets/Logo.svg';
 
-import { LinkStyled } from '../../components/Link';
+import { LinkStyled } from '../../components/generics/Link';
 
 import { Background } from '../../layout/Background/DefaultBack/style';
 import { ContainerRegister } from '../../layout/Containers/style';
 
 import schema from '../../validations/registerUser';
 
-import { RegisterForm } from '../../layout/Form/RegisterForm';
-import { AuthContext } from '../../contexts/AuthContext';
+import { RegisterForm } from '../../components/layout/Form/RegisterForm';
+import { useAuth } from '../../contexts/AuthContext';
 
 const RegisterPage = () => {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser } = useAuth();
 
   const {
     register,

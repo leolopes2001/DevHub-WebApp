@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable react/prop-types */
 
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import api from '../service/api';
 
-export const AuthContext = createContext({});
+const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setAuthentication] = useState(false);
@@ -15,54 +15,67 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userToken = window.localStorage.getItem('userToken');
-    const userId = window.localStorage.getItem('userId');
+    const loadUser = async () => {
+      setIsLoading(true);
+      const userToken = window.localStorage.getItem('userToken');
 
-    if (!userToken || !userId) {
-      setAuthentication(false);
-    } else {
+      if (userToken) {
+        try {
+          api.defaults.headers.authorization = `Bearer ${userToken}`;
 
-      api.defaults.headers.authorization = `Bearer ${userToken}`
-      setAuthentication(true);
-    }
+          const { data } = await api.get('/profile');
+
+          setAuthentication(true);
+          setUser(data);
+        } catch (error) {
+          localStorage.clear();
+          setUser(null);
+          setAuthentication(false);
+        }
+      } else {
+        localStorage.clear();
+        setUser(null);
+        setAuthentication(false);
+      }
+
+      setIsLoading(false);
+    };
+
+    loadUser();
   }, []);
 
   const loginUser = async (formData) => {
     setIsLoading(true);
 
-    
-    await api
-      .post('/sessions', formData)
-      .then((res) => {
-        window.localStorage.clear();
+    try {
+      const { data } = await api.post('/sessions', formData);
 
-        window.localStorage.setItem('userToken', res.data.token);
-        window.localStorage.setItem('userId', res.data.user.id);
+      window.localStorage.clear();
 
-        api.defaults.headers.authorization = `Bearer ${res.data.token}`
-        setUser(res.data.user);
-        setAuthentication(true);
+      window.localStorage.setItem('userToken', data.token);
+      window.localStorage.setItem('userId', data.user.id);
 
-        setIsLoading(false);
-        navigate('/');
-        toast.success('Login realizado com sucesso!');
-      })
-      .catch(() => {
-        setIsLoading(false);
-        toast.error('Algo deu errado, tente novamente!');
-      });
+      api.defaults.headers.authorization = `Bearer ${data.token}`;
+      setUser(data.user);
+      setAuthentication(true);
+
+      setIsLoading(false);
+      navigate('/');
+      toast.success('Login realizado com sucesso!');
+    } catch (error) {
+      setIsLoading(false);
+      toast.error('Algo deu errado, tente novamente!');
+    }
   };
 
-  const registerUser = (formData) => {
-    api
-      .post('/users', formData)
-      .then(() => {
-        navigate('/login');
-        toast.success('Registro realizado com suceeso!');
-      })
-      .catch(({ response: { data } }) => {
-        toast.error(data.message);
-      });
+  const registerUser = async (formData) => {
+    try {
+      await api.post('/users', formData);
+      navigate('/login');
+      toast.success('Registro realizado com suceeso!');
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   const logout = () => {
@@ -71,23 +84,23 @@ const AuthProvider = ({ children }) => {
     navigate('/');
   };
 
+  const authContextValue = {
+    registerUser,
+    loginUser,
+    isAuthenticated,
+    isLoading,
+    logout,
+    user,
+    setUser,
+  };
+
   return (
-    <AuthContext.Provider
-      value={{
-        registerUser,
-        loginUser,
-        isAuthenticated,
-        isLoading,
-        logout,
-        user,
-        setUser
-      }}
-    >
+    <AuthContext.Provider value={authContextValue}>
       {children}
     </AuthContext.Provider>
   );
 };
 
+const useAuth = () => useContext(AuthContext);
 
-
-export default AuthProvider;
+export { useAuth, AuthProvider };

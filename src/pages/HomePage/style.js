@@ -11,13 +11,19 @@ export const ContainerHeader = styled(ContainerHome)`
   justify-content: space-between;
 `;
 export const ContainerProfile = styled(ContainerHome)`
-  flex-direction: column;
-  align-items: flex-start;
-
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.6rem auto;
   p,
   h4 {
+    margin: 0;
     text-align: start;
+
   }
+
+
+ 
 `;
 
 export const ContainerMain = styled(ContainerHome)`

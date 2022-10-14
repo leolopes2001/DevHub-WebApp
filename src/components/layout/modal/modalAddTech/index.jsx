@@ -7,13 +7,14 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
-import { LabelStyled } from '../../../components/Text';
+import { toast } from 'react-toastify';
+import { LabelStyled } from '../../../generics/Text';
 
-import { ButtonStyled } from '../../../components/Button/index';
-import { InputStyled } from '../../../components/Input/style';
-import { TitleStyled } from '../../../components/Title/index';
+import { ButtonStyled } from '../../../generics/Button/index';
+import { InputStyled } from '../../../generics/Input/style';
+import { TitleStyled } from '../../../generics/Title/index';
 
-import { SelectStyled } from '../../../components/Select/style';
+import { SelectStyled } from '../../../generics/Select/style';
 import {
   ModalStyled,
   BoxHeader,
@@ -21,7 +22,7 @@ import {
   BoxSelect,
   BoxPadding,
 } from './style';
-import api from '../../../service/api';
+import api from '../../../../service/api';
 
 const schema = yup.object({
   title: yup.string().required('O título é obrigatório'),
@@ -37,6 +38,7 @@ export const ModalAddTech = ({
     register,
     handleSubmit,
     clearErrors,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -52,8 +54,12 @@ export const ModalAddTech = ({
 
       setTechList((oldListTech) => [...oldListTech, data]);
 
-      setIsActiveModalAdd(false)
+      setIsActiveModalAdd(false);
+
+      toast.success('Tecnologia Cadastrada!');
+      reset();
     } catch (error) {
+      toast.error('Essa tecnologia já foi adicionada!');
       console.log(error);
     }
   };
@@ -101,14 +107,10 @@ export const ModalAddTech = ({
                       Selecionar status
                     </LabelStyled>
                     <SelectStyled name='status' {...register('status')}>
-                      <option>Iniciante</option>
-                      <option>Avançado</option>
-                      {/* <option>Terceiro Módulo</option>
-                      <option>Quarto Módulo</option>
-                      <option>Quinto Módulo</option>
-                      <option>Sexto Módulo</option> */}
+                      <option value='Básico'>Básico</option>
+                      <option value='Intermediário'>Intermediário</option>
+                      <option value='Avançado'>Avançado</option>
                     </SelectStyled>
-                    <p>{errors.status?.message}</p>
                   </BoxSelect>
 
                   <ButtonStyled variant='login' type='submit'>

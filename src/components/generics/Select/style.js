@@ -17,4 +17,7 @@ export const SelectStyled = styled.select`
   line-height: 26px;
 
   color: #868e96;
+  cursor: pointer;
+
+  
 `;

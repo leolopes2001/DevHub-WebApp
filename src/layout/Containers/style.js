@@ -32,5 +32,5 @@ export const ContainerRegister = styled(Container)`
 `;
 
 export const ContainerHome = styled(Container)`
-  max-width: 620px;
+  max-width: 800px;
 `;

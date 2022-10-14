@@ -15,5 +15,15 @@ export const ListStyled = styled.ul`
   gap: 1rem;
   margin-top: 29px;
   overflow-x: scroll;
+  position: relative;
 `;
 
+export const EmptyLi = styled.li`
+  color: white;
+  position: absolute;
+  font-size: 1.2rem;
+  text-align: center;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+`;

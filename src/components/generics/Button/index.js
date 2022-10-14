@@ -126,7 +126,7 @@ export const ButtonType = {
 export const ButtonStyled = styled.button`
   font-family: 'Inter';
   font-style: normal;
-  transition: 0.4s;
+  transition: 0.3s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -134,6 +134,10 @@ export const ButtonStyled = styled.button`
   border: none;
   background-color: transparent;
   border-radius: 4px;
+
+  &:hover{
+    filter: brightness(1.2);
+  }
 
   ${({ variant }) => ButtonType[variant || 'default']}
 `;

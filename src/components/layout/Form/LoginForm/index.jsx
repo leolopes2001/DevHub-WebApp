@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 
-import { TitleStyled } from '../../../components/Title';
-import { ButtonStyled } from '../../../components/Button';
-import { LinkStyled } from '../../../components/Link';
+import { TitleStyled } from '../../../generics/Title';
+import { ButtonStyled } from '../../../generics/Button';
+import { LinkStyled } from '../../../generics/Link/index';
 import { Form } from '../style';
 import { BoxInput } from '../../BoxInput';
-import { TextStyled } from '../../../components/Text';
+import { TextStyled } from '../../../generics/Text';
 
 import { BoxInputPassword } from './InputPassword';
 

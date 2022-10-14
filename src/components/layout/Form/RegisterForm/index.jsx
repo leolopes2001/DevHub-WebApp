@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
-import { TitleStyled } from '../../../components/Title';
-import { LabelStyled, TextStyled } from '../../../components/Text';
+import { TitleStyled } from '../../../generics/Title';
+import { LabelStyled, TextStyled } from '../../../generics/Text';
 import { BoxInput } from '../../BoxInput';
 import { Form } from '../style';
-import { ButtonStyled } from '../../../components/Button';
+import { ButtonStyled } from '../../../generics/Button';
 import { SelectBox } from './style';
 
 export const RegisterForm = (props) => {
