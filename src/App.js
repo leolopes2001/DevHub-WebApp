@@ -2,18 +2,16 @@ import { ToastContainer } from 'react-toastify';
 
 import GlobalStyle from './styles/globalStyle';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { useAuth } from './contexts/AuthContext';
+// import { useAuth } from './contexts/AuthContext';
 
-import PublicRoutes from './routes/publicRoutes';
-import PrivateRoutes from './routes/privateRoutes';
+// import PublicRoutes from './routes/publicRoutes';
+// import PrivateRoutes from './routes/privateRoutes';
+import Routes from './routes/routes';
 
-const App = () => {
-  const { isAuthenticated } = useAuth();
-
-  return (
+const App = () => (
     <>
-      {isAuthenticated ? <PrivateRoutes /> : <PublicRoutes />}
       <GlobalStyle />
+      <Routes />
       <ToastContainer
         position='top-right'
         autoClose={1200}
@@ -27,6 +25,5 @@ const App = () => {
       />
     </>
   );
-};
 
 export default App;

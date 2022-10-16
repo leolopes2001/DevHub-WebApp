@@ -25,8 +25,9 @@ const AuthProvider = ({ children }) => {
 
           const { data } = await api.get('/profile');
 
-          setAuthentication(true);
           setUser(data);
+          setAuthentication(true);
+          navigate('/home');
         } catch (error) {
           localStorage.clear();
           setUser(null);

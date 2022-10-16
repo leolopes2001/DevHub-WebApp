@@ -4,7 +4,7 @@ import { LabelStyled } from '../../generics/Text';
 import { BoxStyled } from './style';
 
 export const BoxInput = (props) => {
-  const { id, type, info, text, errors, register } = props;
+  const { id, type, info, text, errors, register, defaultValue } = props;
 
   return (
     <BoxStyled>
@@ -15,6 +15,7 @@ export const BoxInput = (props) => {
         id={id}
         placeholder={info}
         {...register(id)}
+        defaultValue={defaultValue}
       />
 
       <p>{errors[id]?.message}</p>

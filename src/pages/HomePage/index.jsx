@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-
+import { IoMdSettings } from 'react-icons/io';
 import { MdOutlineAdd } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
@@ -22,6 +23,8 @@ import { TextStyled } from '../../components/generics/Text';
 import { useAuth } from '../../contexts/AuthContext';
 import { TechList } from '../../components/layout/TechList';
 import api from '../../service/api';
+
+import { LinkStyled } from '../../components/generics/Link';
 
 const HomePage = () => {
   const { logout, user, setUser } = useAuth();
@@ -57,6 +60,9 @@ const HomePage = () => {
       >
         <Header>
           <ContainerHeader>
+            <LinkStyled variant='settings' to='/settings'>
+              <IoMdSettings />
+            </LinkStyled>
             <img src={Logo} alt='Logo site' />
             <ButtonStyled onClick={() => logout()}>Sair</ButtonStyled>
           </ContainerHeader>
@@ -67,7 +73,7 @@ const HomePage = () => {
             <TitleStyled tag='h4' variant='title1'>
               Olá, {user.name}
             </TitleStyled>
-            <TextStyled variant='text3'>Primeiro módulo</TextStyled>
+            <TextStyled variant='text3'>{user.course_module}</TextStyled>
           </ContainerProfile>
         </SectionProfile>
 

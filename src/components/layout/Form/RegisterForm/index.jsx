@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 
 import { TitleStyled } from '../../../generics/Title';
-import { LabelStyled, TextStyled } from '../../../generics/Text';
+import { TextStyled } from '../../../generics/Text';
 import { BoxInput } from '../../BoxInput';
 import { Form } from '../style';
 import { ButtonStyled } from '../../../generics/Button';
-import { SelectBox } from './style';
+import { SelectBox } from '../../SelectBox';
 
 export const RegisterForm = (props) => {
   const { variant, handleSubmit, registerUser, errors, register } = props;
@@ -72,17 +72,7 @@ export const RegisterForm = (props) => {
         errors={errors}
       />
 
-      <SelectBox>
-        <LabelStyled htmlFor='course_module'>Selecionar módulo</LabelStyled>
-        <select id='course_module' {...register('course_module')}>
-          <option value='1'>Primeiro Módulo</option>
-          <option value='2'>Segundo Módulo</option>
-          <option value='3'>Terceiro Módulo</option>
-          <option value='4'>Quarto Módulo</option>
-          <option value='5'>Quinto Módulo</option>
-          <option value='6'>Sexto Módulo</option>
-        </select>
-      </SelectBox>
+      <SelectBox register={register} />
 
       <ButtonStyled variant='register' type='submit'>
         Cadastrar

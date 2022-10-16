@@ -6,9 +6,11 @@ import { AuthProvider } from '../AuthContext';
 
 const Providers = ({ children }) => (
   <BrowserRouter>
+
     <ThemeProvider theme={dark}>
       <AuthProvider>{children}</AuthProvider>
     </ThemeProvider>
+
   </BrowserRouter>
 );
 

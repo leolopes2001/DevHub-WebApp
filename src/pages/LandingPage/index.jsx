@@ -18,7 +18,7 @@ const LandingPage = () => (
           <h4>Bem Vindo</h4>
           <h4>a</h4>
           <img src={Logo} alt='Logo site' />
-          <LinkStyled to='login'>Comecar</LinkStyled>
+          <LinkStyled to='/login'>Comecar</LinkStyled>
         </DivTitle>
 
         <DivImg>

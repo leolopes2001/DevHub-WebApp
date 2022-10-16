@@ -111,7 +111,7 @@ export const ModalEditTech = ({
                       Selecionar status
                     </LabelStyled>
                     <SelectStyled name='status' {...register('status')}>
-                      <option value='Básico'>Básico</option>
+                      <option value='Iniciante'>Iniciante</option>
                       <option value='Intermediário'>Intermediário</option>
                       <option value='Avançado'>Avançado</option>
                     </SelectStyled>

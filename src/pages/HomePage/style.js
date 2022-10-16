@@ -22,7 +22,12 @@ export const ContainerProfile = styled(ContainerHome)`
 
   }
 
-
+  @media (max-width: 480px){
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: start;
+    align-items: flex-start;
+  }
  
 `;
 

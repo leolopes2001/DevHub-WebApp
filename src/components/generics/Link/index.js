@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
@@ -14,7 +15,6 @@ export const LinkType = {
     height: 40.11px;
 
     background: #212529;
-   
   `,
 
   register: css`
@@ -22,7 +22,6 @@ export const LinkType = {
 
     min-width: 100%;
     min-height: 48px;
-    
 
     background: #868e96;
 
@@ -33,6 +32,42 @@ export const LinkType = {
     line-height: 26px;
 
     color: #f8f9fa;
+  `,
+
+  navLink: css`
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+
+    color: #f8f9fa;
+    text-align: center;
+    gap: 0.3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 60px;
+    svg {
+      font-size: 1.6rem;
+    }
+    ${({ whichisactive, children }) => {
+      if (children[1] === whichisactive) {
+        return css`
+          text-align: center;
+          color: #ff577f;
+        `;
+      }
+    }}
+  `,
+
+  settings: css`
+    color: #f8f9fa;
+    font-size: 1.2rem;
+
+    &:hover{
+      color: #FF577F;
+    }
   `,
 };
 
@@ -49,5 +84,5 @@ export const LinkStyled = styled(Link)`
   border-radius: 4px;
   text-decoration: none;
 
-  ${({ variant }) => LinkType[variant || "default"]}
+  ${({ variant }) => LinkType[variant || 'default']}
 `;
