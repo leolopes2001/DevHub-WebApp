@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ContainerHome } from '../../layout/Containers/style';
 
 export const Header = styled.header`
-  border-bottom: 1px solid #212529;
+  border-bottom: 1px solid ${({theme}) => theme.colors.grey3};
 `;
 
 export const ContainerHeader = styled(ContainerHome)`
@@ -43,5 +43,5 @@ export const ContainerMain = styled(ContainerHome)`
 `;
 
 export const SectionProfile = styled.section`
-  border-bottom: 1px solid #212529;
+  border-bottom: 1px solid ${({theme}) => theme.colors.grey3};
 `;

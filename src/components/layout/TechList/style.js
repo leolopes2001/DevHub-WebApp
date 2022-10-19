@@ -7,7 +7,7 @@ export const ListStyled = styled.ul`
   max-height: 416.37px;
   min-height: 416.37px;
 
-  background: #212529;
+  background: ${({theme}) => theme.colors.grey3};
   border-radius: 4px;
 
   display: flex;

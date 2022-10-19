@@ -1,5 +1,5 @@
 export default {
-  title: 'dark',
+  name: 'dark',
 
   colors: {
     primary: '#FF577F',
@@ -12,7 +12,7 @@ export default {
     grey1: '#868E96',
     grey0: '#F8F9FA',
 
-    whiteFixed: '#fffff',
+    whiteFixed: '#fff',
     blackFixed: '#00000',
 
     sucess: '#3FE864',
@@ -31,7 +31,7 @@ export default {
     weight4: 600,
     weight5: 500,
     weight6: 400,
-    
+
     height1: '28px',
     height2: '26px',
     height3: '24px',

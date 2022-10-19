@@ -2,17 +2,17 @@ import styled, { css } from 'styled-components';
 
 export const ButtonType = {
   default: css`
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 28px;
+    font-weight: ${({ theme }) => theme.font.weight4};
+    font-size: ${({ theme }) => theme.font.size3};
+    line-height: ${({ theme }) => theme.font.height1};
 
-    color: #f8f9fa;
+    color:${({ theme }) => theme.colors.grey0};
 
     padding: 0px 16.2426px;
 
     height: 40.11px;
 
-    background: #212529;
+    background: ${({ theme }) => theme.colors.grey3};
   `,
   login: css`
     background-color: ${({ theme }) => theme.colors.primary};
@@ -22,15 +22,11 @@ export const ButtonType = {
     min-width: 100%;
     min-height: 48px;
 
-    background: #ff577f;
+    background: ${({ theme }) => theme.colors.primary};
 
-    border: 1.2182px solid #ff577f;
+    border: 1.2182px solid ${({ theme }) => theme.colors.primary};
 
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.whiteFixed};
   `,
   register: css`
     padding: 0px 22.3336px;
@@ -38,88 +34,64 @@ export const ButtonType = {
     min-width: 100%;
     min-height: 48px;
 
-    border: 1.2182px solid #59323f;
+    border: 1.2182px solid ${({ theme }) => theme.colors.primaryNegative};
 
-    order: 9;
-    flex-grow: 0;
-
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-
-    color: #ffffff;
-    background-color: #ff577f;
+    color: ${({ theme }) => theme.colors.whiteFixed};
+    background: ${({ theme }) => theme.colors.primary};
 
     &:hover {
-      background: #59323f;
+      background: ${({ theme }) => theme.colors.primaryNegative};
     }
   `,
   addTech: css`
     min-width: 100%;
     min-height: 48px;
 
-    background: #ff577f;
+    background: ${({ theme }) => theme.colors.primary};
+
     border-radius: 4px;
     color: #ffff;
-    border: 1.2182px solid #ff577f;
-
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
+    border: 1.2182px solid ${({ theme }) => theme.colors.primary};
   `,
 
   deleteTech: css`
     width: 98px;
     min-height: 48px;
 
-    background: #868e96;
+    background: ${({ theme }) => theme.colors.grey1};
 
-    border: 1.2182px solid #868e96;
+    border: 1.2182px solid ${({ theme }) => theme.colors.grey1};
     border-radius: 4px;
 
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.whiteFixed};
   `,
 
   btnOpenModal: css`
     min-width: 32px;
     min-height: 32px;
-    background: #212529;
+    background: ${({ theme }) => theme.colors.grey3};
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffff;
+    color: ${({ theme }) => theme.colors.whiteFixed};
     font-size: 1.4rem;
   `,
 
   btnCloseModal: css`
-    background-color: transparent;
-    color: white;
+    font-weight: ${({ theme }) => theme.font.weight4};
 
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 26px;
-    color: #868e96;
+    color: ${({ theme }) => theme.colors.grey1};
   `,
   saveChange: css`
     width: 100%;
     max-width: 204px;
     min-height: 48px;
 
-    background: #ff577f;
+    background: ${({ theme }) => theme.colors.primary};
     border-radius: 4px;
-    color: #ffff;
-    border: 1.2182px solid #ff577f;
-
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-
-    
+    color: ${({ theme }) => theme.colors.whiteFixed};
+    border: 1.2182px solid ${({ theme }) => theme.colors.primary};
   `,
 };
 
@@ -134,8 +106,11 @@ export const ButtonStyled = styled.button`
   border: none;
   background-color: transparent;
   border-radius: 4px;
+  font-weight: ${({ theme }) => theme.font.weight5};
+  font-size: ${({ theme }) => theme.font.size2};
+  line-height: ${({ theme }) => theme.font.height2};
 
-  &:hover{
+  &:hover {
     filter: brightness(1.2);
   }
 

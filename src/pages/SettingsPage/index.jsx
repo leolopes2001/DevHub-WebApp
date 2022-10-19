@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { AiFillLock } from 'react-icons/ai';
 import { IoIosColorPalette } from 'react-icons/io';
@@ -12,7 +12,20 @@ import { LinkStyled } from '../../components/generics/Link';
 import { HeaderStyled, ContainerSettingsPage, NavStyled } from './style';
 
 const SettingsPage = () => {
-  const [whichIsActive, setWhichIsActive] = useState('Dados Pessoais');
+  const { pathname } = useLocation();
+
+  const [whichIsActive, setWhichIsActive] = useState(() => {
+    switch (pathname) {
+      case '/dashboard/settings':
+        return 'Dados Pessoais';
+      case '/dashboard/settings/resetPassoword':
+        return 'Redifinir Senha';
+      case '/dashboard/settings/changeTheme':
+        return 'Mudar Tema';
+      default:
+        return 'Dados Pessoais';
+    }
+  });
 
   return (
     <Background>
@@ -26,7 +39,7 @@ const SettingsPage = () => {
           <ContainerSettingsPage>
             <HeaderStyled>
               <img src={Logo} alt='' />
-              <LinkStyled to='/home'>Voltar</LinkStyled>
+              <LinkStyled to='/dashboard'>Voltar</LinkStyled>
             </HeaderStyled>
           </ContainerSettingsPage>
 
@@ -36,7 +49,7 @@ const SettingsPage = () => {
                 whichisactive={whichIsActive}
                 onClick={() => setWhichIsActive('Dados Pessoais')}
                 variant='navLink'
-                to='/settings'
+                to='/dashboard/settings'
               >
                 <FaUserAlt />
                 Dados Pessoais

@@ -7,7 +7,6 @@ const rotating = keyframes`
         transform: rotate(0deg);
     }
     to{
-        
         transform: rotate(360deg);
     }
 `;
@@ -19,11 +18,11 @@ export const ContainerLoading = styled(Background)`
   height: 100vh;
   width: 100%;
   position: fixed;
-  background-color: black;
+  background-color:${({theme}) => theme.colors.blackFixed};
   top: 0;
   left: 0%;
   z-index: 1000;
-  color: #ffff;
+  color: ${({theme}) => theme.colors.whiteFixed};
 
   div {
     flex-direction: column;
@@ -39,10 +38,9 @@ export const LoopDiv = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  
+
   animation-name: ${rotating};
   animation-timing-function: linear;
   animation-duration: 1s;
   animation-iteration-count: infinite;
-
 `;

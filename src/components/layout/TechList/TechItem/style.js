@@ -5,7 +5,7 @@ export const LiStyled = styled.li`
   width: 100%;
   min-height: 49px;
   cursor: pointer;
-  background: #121214;
+  background: ${({theme}) => theme.colors.grey4};
   border-radius: 4px;
   padding: 0 1rem;
   display: flex;
@@ -14,7 +14,7 @@ export const LiStyled = styled.li`
   transition: background 300ms;
 
   &:hover {
-    background: #343b41;
+    background: ${({theme}) => theme.colors.grey2};
   }
 
 `;

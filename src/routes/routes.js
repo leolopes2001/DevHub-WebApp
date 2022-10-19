@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { AnimatePresence } from 'framer-motion';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage';
@@ -8,27 +9,29 @@ import SettingsPage from '../pages/SettingsPage/index';
 import PrivateRoutes from './PrivateRoutes';
 
 import { PersonalData } from '../pages/SettingsPage/PersonalData';
-import  ResetPassword  from '../pages/SettingsPage/ResetPassword/index';
+import ResetPassword from '../pages/SettingsPage/ResetPassword/index';
 import { ChangeTheme } from '../pages/SettingsPage/ChangeTheme';
 
 const RoutesMain = () => (
   <AnimatePresence>
     <Routes>
-      <Route path='/landingPage' element={<LandingPage />} />
-      <Route path='login' element={<LoginPage />} />
-      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/dashboard' element={<PrivateRoutes />}>
+        <Route  element={<HomePage />} />
 
-      <Route element={<PrivateRoutes />}>
-        <Route path='/home' element={<HomePage />} />
-
-        <Route path='/settings' element={<SettingsPage />}>
+        <Route path='settings' element={<SettingsPage />}>
           <Route index element={<PersonalData />} />
           <Route path='resetPassoword' element={<ResetPassword />} />
           <Route path='changeTheme' element={<ChangeTheme />} />
         </Route>
+
+        <Route path='*' element={<Navigate to='/dashboard' />} />
       </Route>
 
-      <Route path='*' element={<Navigate to='/home' />} />
+      <Route path='/' element={<LandingPage />} />
+      <Route path='login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
+
+      <Route path='*' element={<Navigate to='/' />} />
     </Routes>
   </AnimatePresence>
 );

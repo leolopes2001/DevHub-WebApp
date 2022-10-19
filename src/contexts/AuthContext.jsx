@@ -1,8 +1,10 @@
+/* eslint-disable no-unneeded-ternary */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable react/prop-types */
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import api from '../service/api';
 
@@ -12,10 +14,11 @@ const AuthProvider = ({ children }) => {
   const [isAuthenticated, setAuthentication] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState([]);
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loadUser = async () => {
+    (async () => {
       setIsLoading(true);
       const userToken = window.localStorage.getItem('userToken');
 
@@ -27,11 +30,13 @@ const AuthProvider = ({ children }) => {
 
           setUser(data);
           setAuthentication(true);
-          navigate('/home');
+
+          navigate(location.pathname);
         } catch (error) {
           localStorage.clear();
           setUser(null);
           setAuthentication(false);
+          navigate('/');
         }
       } else {
         localStorage.clear();
@@ -40,9 +45,7 @@ const AuthProvider = ({ children }) => {
       }
 
       setIsLoading(false);
-    };
-
-    loadUser();
+    })();
   }, []);
 
   const loginUser = async (formData) => {
@@ -61,7 +64,7 @@ const AuthProvider = ({ children }) => {
       setAuthentication(true);
 
       setIsLoading(false);
-      navigate('/');
+      navigate('/dashboard');
       toast.success('Login realizado com sucesso!');
     } catch (error) {
       setIsLoading(false);

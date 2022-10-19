@@ -25,6 +25,6 @@ export const DivEye = styled.div`
 
   svg {
     position: absolute;
-    color: #f8f9fa;
+    color: ${({theme}) => theme.colors.grey0};
   }
 `;

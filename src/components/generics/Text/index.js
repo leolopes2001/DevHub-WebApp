@@ -2,32 +2,30 @@ import styled, { css } from 'styled-components';
 
 export const TextVariant = {
   text1: css`
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 18px;
-
-    color: #868e96;
     margin-top: 27px;
     margin-bottom: 18px;
     text-align: center;
+
+    font-weight: ${({ theme }) => theme.font.weight4};
+    font-size: ${({ theme }) => theme.font.size4};
+    line-height: ${({ theme }) => theme.font.height5};
+    color: ${({ theme }) => theme.colors.grey1};
   `,
 
   text2: css`
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #ffffff;
+    font-weight: ${({ theme }) => theme.font.weight6};
+    font-size: ${({ theme }) => theme.font.size2};
+    line-height: ${({ theme }) => theme.font.height3};
+    color: ${({ theme }) => theme.colors.whiteFixed};
   `,
 
   text3: css`
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 22px;
-    color: #868e96;
     text-align: center;
+    font-weight: ${({ theme }) => theme.font.weight6};
+    font-size: ${({ theme }) => theme.font.size4};
+    line-height: ${({ theme }) => theme.font.height4};
+    color: ${({ theme }) => theme.colors.grey1};
   `,
-
-  
 };
 
 export const TextStyled = styled.p`

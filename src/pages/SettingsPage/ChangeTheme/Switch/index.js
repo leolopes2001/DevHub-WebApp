@@ -1,19 +1,19 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable react/prop-types */
 
-import { useState } from 'react';
+import { useTheme } from '../../../../contexts/ThemeProvider';
 import './style.css';
 
-function Switch({ toggleTheme, isDarkTheme }) {
-  const [isToggled, setIsToggled] = useState(isDarkTheme);
-
-  const onToggle = () => {
-    setIsToggled(!isToggled);
-    toggleTheme();
-  };
+function Switch() {
+  const { toggleTheme, theme } = useTheme();
 
   return (
     <label className='toggle-switch'>
-      <input type='checkbox' checked={isToggled} onChange={onToggle} />
+      <input
+        type='checkbox'
+        checked={theme.name === 'dark'}
+        onChange={toggleTheme}
+      />
       <span className='switch' />
     </label>
   );

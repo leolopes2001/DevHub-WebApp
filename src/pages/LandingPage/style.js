@@ -16,7 +16,7 @@ export const Main = styled.main`
 `;
 
 export const DivTitle = styled.div`
-  color: #ffff;
+  color: ${({theme}) => theme.colors.whiteFixed};
   gap: 0.5rem;
   display: flex;
   flex-direction: column;

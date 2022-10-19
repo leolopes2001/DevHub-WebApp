@@ -23,7 +23,7 @@ export const ModalStyled = styled.div`
     min-height: 365px;
     max-width: 369px;
 
-    background: #212529;
+    background: ${({theme}) => theme.colors.grey3};
     box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
   }
@@ -39,8 +39,8 @@ export const BoxHeader = styled.div`
   min-height: 50px;
   max-height: 50px;
   border-radius: 4px 4px 0px 0px;
-  background: #343b41;
-  color: white;
+  background: ${({theme}) => theme.colors.grey2};
+  color: ${({theme}) => theme.colors.whiteFixed};
 `;
 
 export const BoxInputName = styled.div`

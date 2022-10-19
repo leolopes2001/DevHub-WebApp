@@ -14,7 +14,7 @@ export const HeaderStyled = styled.header`
 
 export const ContainerSettingsPage = styled.div`
   width: 100%;
-  border-bottom: 1px solid #212529;
+  border-bottom: 1px solid ${({theme}) => theme.colors.grey3};
 `;
 
 export const NavStyled = styled.nav`

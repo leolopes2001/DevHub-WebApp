@@ -7,17 +7,15 @@ export const SelectStyled = styled.select`
 
   height: 48px;
 
-  background: #343b41;
+  background: ${({ theme }) => theme.colors.grey2};
 
-  border: 1.2182px solid #343b41;
+  border: 1.2182px solid ${({ theme }) => theme.colors.grey2};
   border-radius: 4px;
 
-  font-weight: 400;
-  font-size: 16.2426px;
-  line-height: 26px;
+  font-weight: ${({ theme }) => theme.font.weight6};
+  font-size: ${({ theme }) => theme.font.size2};
+  line-height: ${({ theme }) => theme.font.height2};
 
-  color: #868e96;
+  color: ${({ theme }) => theme.colors.grey1};
   cursor: pointer;
-
-  
 `;

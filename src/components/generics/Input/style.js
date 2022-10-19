@@ -6,9 +6,9 @@ export const InputStyled = styled.input`
   width: 100%;
   height: 48px;
 
-  background: #343b41;
+  background: ${({ theme }) => theme.colors.grey2};
 
-  border: 0.973988px solid #343b41;
+  border: 0.973988px solid ${({ theme }) => theme.colors.grey2};
   border-radius: 3.19812px;
 
   ${({ borderActive }) =>
@@ -17,7 +17,6 @@ export const InputStyled = styled.input`
       border-color: red;
     `}
 
-    
   &:focus {
     ${({ borderActive }) =>
       borderActive &&
@@ -27,17 +26,17 @@ export const InputStyled = styled.input`
   }
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  font-size: 16.2426px;
-  line-height: 26px;
-  color: #f8f9fa;
+  font-weight: ${({ theme }) => theme.font.weight6};
+  font-size: ${({ theme }) => theme.font.size2};
+  line-height: ${({ theme }) => theme.font.height2};
+  color: ${({ theme }) => theme.colors.grey0};
 
   &::placeholder {
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 400;
-    font-size: 16.2426px;
-    line-height: 26px;
-    color: #868e96;
+    font-weight: ${({ theme }) => theme.font.weight6};
+    font-size: ${({ theme }) => theme.font.size2};
+    line-height: ${({ theme }) => theme.font.height2};
+    color: ${({ theme }) => theme.colors.grey1};
   }
 `;

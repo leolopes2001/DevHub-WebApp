@@ -4,17 +4,17 @@ import styled, { css } from 'styled-components';
 
 export const LinkType = {
   default: css`
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 28px;
+    font-weight: ${({ theme }) => theme.font.weight4};
+    font-size: ${({ theme }) => theme.font.size4};
+    line-height: ${({ theme }) => theme.font.height1};
 
-    color: #f8f9fa;
+    color: ${({ theme }) => theme.colors.grey0};
 
     padding: 0px 16.2426px;
 
     height: 40.11px;
 
-    background: #212529;
+    background: ${({ theme }) => theme.colors.grey3};
   `,
 
   register: css`
@@ -23,23 +23,23 @@ export const LinkType = {
     min-width: 100%;
     min-height: 48px;
 
-    background: #868e96;
+    background: ${({ theme }) => theme.colors.grey1};
 
-    border: 1.2182px solid #868e96;
+    border: 1.2182px solid ${({ theme }) => theme.colors.grey1};
 
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
+    font-weight: ${({ theme }) => theme.font.weight5};
+    font-size: ${({ theme }) => theme.font.size2};
+    line-height: ${({ theme }) => theme.font.height2};
 
-    color: #f8f9fa;
+    color: ${({ theme }) => theme.colors.grey0};
   `,
 
   navLink: css`
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
+    font-weight: ${({ theme }) => theme.font.weight5};
+    font-size: ${({ theme }) => theme.font.size2};
+    line-height: ${({ theme }) => theme.font.height2};
 
-    color: #f8f9fa;
+    color: ${({ theme }) => theme.colors.grey0};
     text-align: center;
     gap: 0.3rem;
     display: flex;
@@ -55,18 +55,18 @@ export const LinkType = {
       if (children[1] === whichisactive) {
         return css`
           text-align: center;
-          color: #ff577f;
+          color: ${({ theme }) => theme.colors.primary};
         `;
       }
     }}
   `,
 
   settings: css`
-    color: #f8f9fa;
+    color: ${({ theme }) => theme.colors.grey0};
     font-size: 1.2rem;
 
-    &:hover{
-      color: #FF577F;
+    &:hover {
+      color: ${({ theme }) => theme.colors.primary};
     }
   `,
 };

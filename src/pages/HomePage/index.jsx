@@ -60,7 +60,7 @@ const HomePage = () => {
       >
         <Header>
           <ContainerHeader>
-            <LinkStyled variant='settings' to='/settings'>
+            <LinkStyled variant='settings' to='/dashboard/settings'>
               <IoMdSettings />
             </LinkStyled>
             <img src={Logo} alt='Logo site' />

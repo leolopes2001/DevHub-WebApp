@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const FormLogin = styled.form`
-  background: #212529;
+  background: ${({theme}) => theme.colors.grey3};
   box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 
