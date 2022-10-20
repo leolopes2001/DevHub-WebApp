@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export default yup.object({
-  name: yup.string().required("Nome é obrigatório"),
+  name: yup.string().required('Nome é obrigatório'),
   email: yup
     .string()
     .email('Deve ser um e-mail válido')

@@ -1,16 +1,28 @@
-/* eslint-disable no-unneeded-ternary */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-constructed-context-values */
-/* eslint-disable react/prop-types */
-
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
 import api from '../service/api';
+
+// interface iAuthProviderProps {
+//   children: ReactNode;
+// }
+
+// interface iUser{
+
+// }
 
 const AuthContext = createContext({});
 
-const AuthProvider = ({ children }) => {
+// eslint-disable-next-line react/prop-types
+function AuthProvider({ children }) {
   const [isAuthenticated, setAuthentication] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState([]);
@@ -65,6 +77,8 @@ const AuthProvider = ({ children }) => {
       window.localStorage.setItem('userId', data.user.id);
 
       api.defaults.headers.authorization = `Bearer ${data.token}`;
+
+      console.log(data.user);
       setUser(data.user);
       setAuthentication(true);
 
@@ -108,7 +122,7 @@ const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 const useAuth = () => useContext(AuthContext);
 
