@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
   const [isAuthenticated, setAuthentication] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState([]);
-  const location = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,17 +31,22 @@ const AuthProvider = ({ children }) => {
           setUser(data);
           setAuthentication(true);
 
-          navigate(location.pathname);
+          switch (pathname) {
+            case '/login':
+            case '/register':
+            case '/landingPage':
+              navigate('/');
+              break;
+            default:
+              navigate(pathname || '/');
+              break;
+          }
         } catch (error) {
           localStorage.clear();
           setUser(null);
           setAuthentication(false);
-          navigate('/');
+          navigate('/landingPage');
         }
-      } else {
-        localStorage.clear();
-        setUser(null);
-        setAuthentication(false);
       }
 
       setIsLoading(false);
@@ -63,12 +68,12 @@ const AuthProvider = ({ children }) => {
       setUser(data.user);
       setAuthentication(true);
 
-      setIsLoading(false);
       navigate('/dashboard');
       toast.success('Login realizado com sucesso!');
     } catch (error) {
-      setIsLoading(false);
       toast.error('Algo deu errado, tente novamente!');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,7 +90,7 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     window.localStorage.clear();
     setAuthentication(false);
-    navigate('/');
+    navigate('/landingPage');
   };
 
   const authContextValue = {

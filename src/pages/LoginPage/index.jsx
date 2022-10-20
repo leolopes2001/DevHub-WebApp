@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { motion } from 'framer-motion';
 
+import { useEffect } from 'react';
 import Img from '../../assets/Logo.svg';
 
 import { Logo } from '../../components/generics/Logo/style';
@@ -15,7 +16,7 @@ import LoginForm from '../../components/layout/Form/LoginForm';
 
 import schema from '../../validations/loginUser';
 import { LoadingBack } from '../../layout/Background/LoadingBack/LoadingBack';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthProvider';
 
 const LoginPage = () => {
   const { loginUser, isLoading } = useAuth();

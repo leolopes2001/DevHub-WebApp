@@ -20,23 +20,20 @@ import { Background } from '../../layout/Background/DefaultBack/style';
 import { TitleStyled } from '../../components/generics/Title';
 import { TextStyled } from '../../components/generics/Text';
 
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthProvider';
 import { TechList } from '../../components/layout/TechList';
 import api from '../../service/api';
 
 import { LinkStyled } from '../../components/generics/Link';
+import { useTech } from '../../contexts/TechProvider';
 
 const HomePage = () => {
   const { logout, user, setUser } = useAuth();
 
-  const [techList, setTechList] = useState([]);
-
-  const [isActiveModalAdd, setIsActiveModalAdd] = useState(false);
-
-  const [contentModal, setContentModal] = useState(false);
+  const { setTechList, setIsActiveModalAdd } = useTech();
 
   useEffect(() => {
-    const loadData = async () => {
+    (async () => {
       try {
         const { data } = await api.get('/profile');
 
@@ -45,9 +42,7 @@ const HomePage = () => {
       } catch (error) {
         console.log(error);
       }
-    };
-
-    loadData();
+    })();
   }, []);
 
   return (
@@ -60,7 +55,7 @@ const HomePage = () => {
       >
         <Header>
           <ContainerHeader>
-            <LinkStyled variant='settings' to='/dashboard/settings'>
+            <LinkStyled variant='settings' to='/settings'>
               <IoMdSettings />
             </LinkStyled>
             <img src={Logo} alt='Logo site' />
@@ -75,7 +70,8 @@ const HomePage = () => {
             </TitleStyled>
             <TextStyled variant='text3'>{user.course_module}</TextStyled>
           </ContainerProfile>
-        </SectionProfile>
+        </SectionProfile> 
+
 
         <main>
           <ContainerMain>
@@ -93,19 +89,11 @@ const HomePage = () => {
               </ButtonStyled>
             </div>
 
-            <ModalAddTech
-              isActiveModalAdd={isActiveModalAdd}
-              setIsActiveModalAdd={setIsActiveModalAdd}
-              setTechList={setTechList}
-            />
+            <ModalAddTech />
 
-            <ModalEditTech
-              contentModal={contentModal}
-              setContentModal={setContentModal}
-              setTechList={setTechList}
-            />
+            <ModalEditTech />
 
-            <TechList techList={techList} setContentModal={setContentModal} />
+            <TechList />
           </ContainerMain>
         </main>
       </motion.div>

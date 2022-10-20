@@ -16,11 +16,11 @@ const SettingsPage = () => {
 
   const [whichIsActive, setWhichIsActive] = useState(() => {
     switch (pathname) {
-      case '/dashboard/settings':
+      case '/settings':
         return 'Dados Pessoais';
-      case '/dashboard/settings/resetPassoword':
+      case '/settings/resetPassoword':
         return 'Redifinir Senha';
-      case '/dashboard/settings/changeTheme':
+      case '/settings/changeTheme':
         return 'Mudar Tema';
       default:
         return 'Dados Pessoais';
@@ -39,7 +39,7 @@ const SettingsPage = () => {
           <ContainerSettingsPage>
             <HeaderStyled>
               <img src={Logo} alt='' />
-              <LinkStyled to='/dashboard'>Voltar</LinkStyled>
+              <LinkStyled to='/'>Voltar</LinkStyled>
             </HeaderStyled>
           </ContainerSettingsPage>
 
@@ -49,7 +49,7 @@ const SettingsPage = () => {
                 whichisactive={whichIsActive}
                 onClick={() => setWhichIsActive('Dados Pessoais')}
                 variant='navLink'
-                to='/dashboard/settings'
+                to='/settings'
               >
                 <FaUserAlt />
                 Dados Pessoais

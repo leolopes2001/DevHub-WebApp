@@ -12,7 +12,7 @@ import { MainStyled } from './style';
 import { ButtonStyled } from '../../../components/generics/Button';
 /* eslint-disable no-unused-vars */
 
-import { useAuth } from '../../../contexts/AuthContext';
+import { useAuth } from '../../../contexts/AuthProvider';
 import api from '../../../service/api';
 
 const schema = yup.object({

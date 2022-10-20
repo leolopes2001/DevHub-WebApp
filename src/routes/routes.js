@@ -15,8 +15,8 @@ import { ChangeTheme } from '../pages/SettingsPage/ChangeTheme';
 const RoutesMain = () => (
   <AnimatePresence>
     <Routes>
-      <Route path='/dashboard' element={<PrivateRoutes />}>
-        <Route  element={<HomePage />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path='/' element={<HomePage />} />
 
         <Route path='settings' element={<SettingsPage />}>
           <Route index element={<PersonalData />} />
@@ -24,14 +24,14 @@ const RoutesMain = () => (
           <Route path='changeTheme' element={<ChangeTheme />} />
         </Route>
 
-        <Route path='*' element={<Navigate to='/dashboard' />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Route>
 
-      <Route path='/' element={<LandingPage />} />
-      <Route path='login' element={<LoginPage />} />
+      <Route path='/landingPage' element={<LandingPage />} />
+      <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
 
-      <Route path='*' element={<Navigate to='/' />} />
+      <Route path='*' element={<Navigate to='/landingPage' />} />
     </Routes>
   </AnimatePresence>
 );

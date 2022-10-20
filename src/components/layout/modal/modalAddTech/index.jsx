@@ -23,17 +23,16 @@ import {
   BoxPadding,
 } from './style';
 import api from '../../../../service/api';
+import { useTech } from '../../../../contexts/TechProvider';
 
 const schema = yup.object({
   title: yup.string().required('O título é obrigatório'),
   status: yup.string().required(),
 });
 
-export const ModalAddTech = ({
-  isActiveModalAdd,
-  setIsActiveModalAdd,
-  setTechList,
-}) => {
+export const ModalAddTech = () => {
+  const { isActiveModalAdd, setIsActiveModalAdd, setTechList } = useTech();
+
   const {
     register,
     handleSubmit,

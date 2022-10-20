@@ -17,7 +17,7 @@ import { ContainerRegister } from '../../layout/Containers/style';
 import schema from '../../validations/registerUser';
 
 import { RegisterForm } from '../../components/layout/Form/RegisterForm';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthProvider';
 
 const RegisterPage = () => {
   const { registerUser } = useAuth();

@@ -1,12 +1,18 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import { Outlet, Navigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthProvider';
 
 const PrivateRoutes = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
 
-  return isAuthenticated ? <Outlet /> : <Navigate to='/' />;
+  
+
+  if (loading) {
+    return null;
+  }
+
+  return isAuthenticated ? <Outlet /> : <Navigate to='/landingPage' replace />;
 };
 
 export default PrivateRoutes;

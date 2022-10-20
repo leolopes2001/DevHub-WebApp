@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable react/prop-types */
 
-import { useTheme } from '../../../../contexts/ThemeProvider';
+import { useTheme } from '../../../../contexts/CustomThemeProvider';
 import './style.css';
 
 function Switch() {

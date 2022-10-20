@@ -21,16 +21,15 @@ import { TitleStyled } from '../../../generics/Title';
 import { ButtonStyled } from '../../../generics/Button';
 import { InputStyled } from '../../../generics/Input/style';
 import { SelectStyled } from '../../../generics/Select/style';
+import { useTech } from '../../../../contexts/TechProvider';
 
 const schema = yup.object({
   status: yup.string().required(),
 });
 
-export const ModalEditTech = ({
-  contentModal,
-  setContentModal,
-  setTechList,
-}) => {
+export const ModalEditTech = () => {
+  const { contentModal, setContentModal, setTechList } = useTech();
+
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
