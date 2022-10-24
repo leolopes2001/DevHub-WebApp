@@ -5,6 +5,7 @@ import Welcome from '../../assets/welcome.svg';
 import { LinkStyled } from '../../components/generics/Link';
 import { Background } from '../../layout/Background/DefaultBack/style';
 import { DivImg, DivTitle, Main } from './style';
+
 const LandingPage = () => {
   return (
     <Background>
@@ -19,7 +20,9 @@ const LandingPage = () => {
             <h4>Bem Vindo</h4>
             <h4>a</h4>
             <img src={Logo} alt='Logo site' />
-            <LinkStyled to='/login'>Comecar</LinkStyled>
+            <LinkStyled variant='default' to='/login'>
+              Comecar
+            </LinkStyled>
           </DivTitle>
 
           <DivImg>

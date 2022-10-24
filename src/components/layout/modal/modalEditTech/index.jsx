@@ -21,7 +21,8 @@ import { TitleStyled } from '../../../generics/Title';
 import { ButtonStyled } from '../../../generics/Button';
 import { InputStyled } from '../../../generics/Input/style';
 import { SelectStyled } from '../../../generics/Select/style';
-import { useTech } from '../../../../contexts/TechProvider';
+import { useTech } from '../../../../contexts/TechProvider/TechProvider';
+import { iTech } from '../../../../service/getDataUser';
 
 const schema = yup.object({
   status: yup.string().required(),
@@ -37,7 +38,7 @@ export const ModalEditTech = () => {
   const onSubmit = (formData) => {
     const submitter = window.event.submitter.name;
 
-    const { id } = contentModal;
+    const id = contentModal?.id;
 
     try {
       api.put(`/users/techs/${id}`, formData);
@@ -53,7 +54,7 @@ export const ModalEditTech = () => {
 
         toast.success('Alterações salvas!');
       } else if (submitter === 'delete') {
-        api.delete(`/users/techs/${contentModal.id}`);
+        api.delete(`/users/techs/${contentModal?.id}`);
 
         setTechList((oldTechList) => [
           ...oldTechList.filter((tech) => tech.id !== id),
@@ -109,7 +110,7 @@ export const ModalEditTech = () => {
                     <LabelStyled htmlFor='status'>
                       Selecionar status
                     </LabelStyled>
-                    <SelectStyled name='status' {...register('status')}>
+                    <SelectStyled {...register('status')}>
                       <option value='Iniciante'>Iniciante</option>
                       <option value='Intermediário'>Intermediário</option>
                       <option value='Avançado'>Avançado</option>
