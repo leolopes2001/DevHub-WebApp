@@ -1,9 +1,7 @@
-
 import { IoMdSettings } from 'react-icons/io';
 import { MdOutlineAdd } from 'react-icons/md';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { ButtonStyled } from '../../components/generics/Button';
+
 import Logo from '../../assets/Logo.svg';
 import {
   ContainerProfile,
@@ -12,40 +10,24 @@ import {
   Header,
   SectionProfile,
 } from './style';
-import { ModalAddTech } from '../../components/layout/modal/modalAddTech';
-import { ModalEditTech } from '../../components/layout/modal/modalEditTech';
+
 import { Background } from '../../layout/Background/DefaultBack/style';
 
-import { TitleStyled } from '../../components/generics/Title';
-import { TextStyled } from '../../components/generics/Text';
-
 import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
-import { TechList } from '../../components/layout/TechList';
 
-import { LinkStyled } from '../../components/generics/Link';
+import { ModalAddTech } from './components/Modal/ModalAddTech';
+import { ModalEditTech } from './components/Modal/ModalEditTech';
+import { TechList } from './components/TechList';
+import { LinkStyled } from '../../components/Link';
+import { TextStyled } from '../../components/Text';
+import { TitleStyled } from '../../components/Title';
+import { ButtonStyled } from '../../components/Button';
 import { useTech } from '../../contexts/TechProvider/TechProvider';
-import { getDataUser } from '../../service/getDataUser';
 
 const HomePage = () => {
-  const { logout, setUser, user } = useAuth();
+  const { logout, user } = useAuth();
 
-  const { setTechList, setIsActiveModalAdd} = useTech();
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await getDataUser();
-
-        const { email, name, bio, course_module, id, contact, techs } = data;
-
-        setTechList(techs);
-
-        setUser({ techs, email, name, bio, course_module, id, contact });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
+  const { setIsActiveModalAdd } = useTech();
 
   return (
     <Background>
@@ -67,7 +49,6 @@ const HomePage = () => {
 
         <SectionProfile>
           <ContainerProfile>
-            
             <TitleStyled tag='h4' variant='title1'>
               Olá, {user.name}
             </TitleStyled>

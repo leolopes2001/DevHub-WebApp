@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import { useTech } from '../../../contexts/TechProvider/TechProvider';
+
+import { useTech } from '../../../../contexts/TechProvider/TechProvider';
 import { ListStyled, EmptyLi } from './style';
 
 import { TechItem } from './TechItem';

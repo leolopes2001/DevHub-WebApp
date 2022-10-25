@@ -1,7 +1,8 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { iDefaultContextProps } from '../../@types/types';
 
-import { iTech } from '../../service/getDataUser';
+import { getDataUser, iTech } from '../../service/getDataUser';
+
 import { iTechContext } from './type';
 
 const TechContext = createContext<iTechContext>({} as iTechContext);
@@ -18,6 +19,18 @@ const TechProvider = ({ children }: iDefaultContextProps) => {
   const [isActiveModalAdd, setIsActiveModalAdd] = useState(false);
 
   const [contentModal, setContentModal] = useState<iTech | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { techs } = await getDataUser();
+
+        setTechList(techs);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   const techContextValue = {
     techList,

@@ -5,13 +5,13 @@ import {
   FieldErrorsImpl,
 } from 'react-hook-form';
 
-import { ButtonStyled } from '../../../../components/generics/Button';
 
-import { TextStyled } from '../../../../components/generics/Text';
-import { TitleStyled } from '../../../../components/generics/Title';
 import { iFormRegister } from '../../../../contexts/AuthProvider/types';
 import { Form } from './style';
 import { BoxInput } from './BoxInput';
+import { TitleStyled } from '../../../../components/Title';
+import { TextStyled } from '../../../../components/Text';
+import { ButtonStyled } from '../../../../components/Button';
 
 interface iRegisterFormProps {
   variant: 'register';

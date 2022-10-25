@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
 import { UseFormRegister } from 'react-hook-form';
-import { iFormRegister } from '../../../contexts/AuthProvider/types';
-import { iDataUser } from '../../../pages/SettingsPage/components/PersonalData';
-import { LabelStyled } from '../../generics/Text';
+import { iDataUser } from '..';
+import { LabelStyled } from '../../../../../components/Text';
+
 
 import { SelectBoxStyled } from './style';
 

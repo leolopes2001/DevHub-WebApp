@@ -1,8 +1,7 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
-import { useTech } from '../../../../contexts/TechProvider/TechProvider';
-import { TextStyled } from '../../../generics/Text';
-import { TitleStyled } from '../../../generics/Title';
+
+import { TextStyled } from '../../../../../components/Text';
+import { TitleStyled } from '../../../../../components/Title';
+import { useTech } from '../../../../../contexts/TechProvider/TechProvider';
 import { LiStyled } from './style';
 
 interface iTechProps {

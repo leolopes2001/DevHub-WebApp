@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import Logo from '../../assets/Logo.svg';
 import Welcome from '../../assets/welcome.svg';
-import { LinkStyled } from '../../components/generics/Link';
+import { LinkStyled } from '../../components/Link';
 import { Background } from '../../layout/Background/DefaultBack/style';
 import { DivImg, DivTitle, Main } from './style';
 

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+import { LabelStyled } from '../../../../../components/Text';
 
-import { LabelStyled } from '../../../../../components/generics/Text';
+
 import { iFormLogin } from '../../../../../contexts/AuthProvider/types';
 import { BoxStyled, Input, DivEye } from './style';
 

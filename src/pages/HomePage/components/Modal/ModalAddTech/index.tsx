@@ -1,35 +1,30 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-
-import { AnimatePresence, motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { LabelStyled } from '../../../generics/Text';
-
-import { ButtonStyled } from '../../../generics/Button/index';
-import { InputStyled } from '../../../generics/Input/style';
-import { TitleStyled } from '../../../generics/Title/index';
-
-import { SelectStyled } from '../../../generics/Select/style';
+import { ButtonStyled } from '../../../../../components/Button';
+import { InputStyled } from '../../../../../components/Input/style';
+import { SelectStyled } from '../../../../../components/Select/style';
+import { LabelStyled } from '../../../../../components/Text';
+import { TitleStyled } from '../../../../../components/Title';
+import { useTech } from '../../../../../contexts/TechProvider/TechProvider';
+import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
+import api from '../../../../../service/api';
+import { iTech } from '../../../../../service/getDataUser';
+import schema from '../../../../../validations/addTech';
 import {
-  ModalStyled,
   BoxHeader,
   BoxInputName,
-  BoxSelect,
   BoxPadding,
+  BoxSelect,
+  ModalStyled,
 } from './style';
-import api from '../../../../service/api';
-import { useTech } from '../../../../contexts/TechProvider/TechProvider';
-
-import schema from '../../../../validations/addTech';
-import { iTech } from '../../../../service/getDataUser';
 
 export const ModalAddTech = () => {
   const { isActiveModalAdd, setIsActiveModalAdd, setTechList } = useTech();
+
+  const modalRef = useOutsideClick(() => setIsActiveModalAdd(false));
 
   const {
     register,
@@ -48,8 +43,6 @@ export const ModalAddTech = () => {
   const onSubmit = async (formData: iTech) => {
     try {
       const { data } = await api.post('/users/techs', formData);
-
-      console.log(data);
 
       setTechList((oldListTech) => [...oldListTech, data]);
 
@@ -74,7 +67,11 @@ export const ModalAddTech = () => {
               exit={{ opacity: 0, y: '-100px' }}
               transition={{ duration: 0.4 }}
             >
-              <form className='content' onSubmit={handleSubmit(onSubmit)}>
+              <form
+                className='content'
+                ref={modalRef}
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <BoxHeader>
                   <TitleStyled variant='title2' tag='h6'>
                     Cadastrar Tecnologia

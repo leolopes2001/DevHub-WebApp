@@ -3,10 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { motion } from 'framer-motion';
 
-import { Logo } from '../../components/generics/Logo/style';
 import ImgLogo from '../../assets/Logo.svg';
-
-import { LinkStyled } from '../../components/generics/Link';
 
 import { Background } from '../../layout/Background/DefaultBack/style';
 import { ContainerRegister } from '../../layout/Containers/style';
@@ -16,6 +13,8 @@ import schema from '../../validations/registerUser';
 import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
 import { iFormRegister } from '../../contexts/AuthProvider/types';
 import { FormRegister } from './components/FormRegister';
+import { Logo } from '../../components/Logo/style';
+import { LinkStyled } from '../../components/Link';
 
 const RegisterPage = () => {
   const { registerUser } = useAuth();

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { AnimatePresence } from 'framer-motion';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage';

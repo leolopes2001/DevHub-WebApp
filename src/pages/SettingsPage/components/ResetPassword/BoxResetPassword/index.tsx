@@ -1,6 +1,7 @@
 import { UseFormRegister } from 'react-hook-form';
-import { InputStyled } from '../../../../../components/generics/Input/style';
-import { LabelStyled } from '../../../../../components/generics/Text';
+import { InputStyled } from '../../../../../components/Input/style';
+import { LabelStyled } from '../../../../../components/Text';
+
 import { BoxStyled } from '../../PersonalData/BoxDataUser/style';
 
 

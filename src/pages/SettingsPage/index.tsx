@@ -6,9 +6,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { Background } from '../../layout/Background/DefaultBack/style';
 import Logo from '../../assets/Logo.svg';
-import { LinkStyled } from '../../components/generics/Link';
+
 
 import { HeaderStyled, ContainerSettingsPage, NavStyled } from './style';
+import { LinkStyled } from '../../components/Link';
 
 const SettingsPage = () => {
   const { pathname } = useLocation();

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { useForm } from 'react-hook-form';
 
 import * as yup from 'yup';
@@ -15,14 +13,15 @@ import {
   BoxPadding,
   BoxButton,
 } from './style';
-import api from '../../../../service/api';
-import { LabelStyled } from '../../../generics/Text';
-import { TitleStyled } from '../../../generics/Title';
-import { ButtonStyled } from '../../../generics/Button';
-import { InputStyled } from '../../../generics/Input/style';
-import { SelectStyled } from '../../../generics/Select/style';
-import { useTech } from '../../../../contexts/TechProvider/TechProvider';
-import { iTech } from '../../../../service/getDataUser';
+
+import { LabelStyled } from '../../../../../components/Text';
+import { TitleStyled } from '../../../../../components/Title';
+import { ButtonStyled } from '../../../../../components/Button';
+import { InputStyled } from '../../../../../components/Input/style';
+import { SelectStyled } from '../../../../../components/Select/style';
+import { useTech } from '../../../../../contexts/TechProvider/TechProvider';
+import api from '../../../../../service/api';
+import { useOutsideClick } from '../../../../../hooks/useOutsideClick';
 
 const schema = yup.object({
   status: yup.string().required(),
@@ -30,6 +29,8 @@ const schema = yup.object({
 
 export const ModalEditTech = () => {
   const { contentModal, setContentModal, setTechList } = useTech();
+
+  const modalRef = useOutsideClick(() => setContentModal(null));
 
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
@@ -79,7 +80,11 @@ export const ModalEditTech = () => {
               exit={{ opacity: 0, y: '-100px' }}
               transition={{ duration: 0.4 }}
             >
-              <form className='content' onSubmit={handleSubmit(onSubmit)}>
+              <form
+                className='content'
+                ref={modalRef}
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <BoxHeader>
                   <TitleStyled variant='title2' tag='h6'>
                     Tecnologia Detalhes

@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ButtonStyled } from '../../../../components/generics/Button';
+
 
 import api from '../../../../service/api';
 import { MainStyled } from './style';
@@ -12,6 +12,7 @@ import { BoxResetPassword } from './BoxResetPassword';
 import { iFormResetPassword } from './BoxResetPassword/index';
 import { AxiosError } from 'axios';
 import { iApiError } from '../../models';
+import { ButtonStyled } from '../../../../components/Button';
 
 const ResetPassowrd = () => {
   const {

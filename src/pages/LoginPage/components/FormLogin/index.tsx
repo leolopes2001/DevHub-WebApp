@@ -1,10 +1,8 @@
-import { TitleStyled } from '../../../../components/generics/Title';
-import { ButtonStyled } from '../../../../components/generics/Button';
-import { LinkStyled } from '../../../../components/generics/Link/index';
+
 
 import { BoxInput } from './BoxInput';
 
-import { TextStyled } from '../../../../components/generics/Text';
+
 
 import { iFormLogin } from '../../../../contexts/AuthProvider/types';
 
@@ -16,6 +14,10 @@ import {
 } from 'react-hook-form';
 import { BoxPassword } from './BoxPassword';
 import { Form } from './style';
+import { ButtonStyled } from '../../../../components/Button';
+import { LinkStyled } from '../../../../components/Link';
+import { TextStyled } from '../../../../components/Text';
+import { TitleStyled } from '../../../../components/Title';
 
 export interface iLoginFormProps {
   variant: any;

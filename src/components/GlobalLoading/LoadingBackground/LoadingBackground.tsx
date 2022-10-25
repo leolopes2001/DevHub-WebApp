@@ -1,6 +1,6 @@
 import { ContainerLoading, LoopDiv } from './style';
 
-export const LoadingBack = () => (
+export const LoadingBackground = () => (
   <ContainerLoading>
     <div>
       <LoopDiv />

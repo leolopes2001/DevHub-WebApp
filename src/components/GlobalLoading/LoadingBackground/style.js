@@ -1,8 +1,7 @@
 import styled, { keyframes } from 'styled-components';
+import { Background } from '../../../layout/Background/DefaultBack/style';
 
-import { Background } from '../DefaultBack/style';
-
-const rotating = keyframes`
+export const rotating = keyframes`
     from{
         transform: rotate(0deg);
     }
@@ -18,11 +17,11 @@ export const ContainerLoading = styled(Background)`
   height: 100vh;
   width: 100%;
   position: fixed;
-  background-color:${({theme}) => theme.colors.blackFixed};
+  background-color: ${({ theme }) => theme.colors.blackFixed};
   top: 0;
   left: 0%;
   z-index: 1000;
-  color: ${({theme}) => theme.colors.whiteFixed};
+  color: ${({ theme }) => theme.colors.whiteFixed};
 
   div {
     flex-direction: column;

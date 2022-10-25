@@ -1,9 +1,10 @@
 import { UseFormRegister } from 'react-hook-form';
-import { InputStyled } from '../../../../../components/generics/Input/style';
-import { LabelStyled } from '../../../../../components/generics/Text';
+
 
 import { BoxStyled } from '../../../../RegisterPage/style';
 import { iDataUser } from '..';
+import { LabelStyled } from '../../../../../components/Text';
+import { InputStyled } from '../../../../../components/Input/style';
 
 interface iBoxInputProps {
   register: UseFormRegister<iDataUser>;

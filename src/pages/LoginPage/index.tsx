@@ -1,31 +1,28 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable react/prop-types */
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { motion } from 'framer-motion';
 
 import Img from '../../assets/Logo.svg';
 
-import { Logo } from '../../components/generics/Logo/style';
-import { Background } from '../../layout/Background/DefaultBack/style';
 import { ContainerLogin } from '../../layout/Containers/style';
 
 import LoginForm from './components/FormLogin';
 
 import schema from '../../validations/loginUser';
-import { LoadingBack } from '../../layout/Background/LoadingBack/LoadingBack';
+
+import { iFormLogin } from '../../contexts/AuthProvider/types';
+import { Background } from '../../layout/Background/DefaultBack/style';
+import { Logo } from '../../components/Logo/style';
 import { useAuth } from '../../contexts/AuthProvider/AuthProvider';
-import { iFormLogin, iFormRegister } from '../../contexts/AuthProvider/types';
 
 const LoginPage = () => {
-  const { loginUser, isLoading } = useAuth();
+  const { loginUser} = useAuth();
 
   const {
-    register,
+    register, 
     handleSubmit,
     formState: { errors },
-  } = useForm<iFormLogin | iFormRegister>({
+  } = useForm<iFormLogin>({
     resolver: yupResolver(schema),
   });
 
@@ -49,8 +46,6 @@ const LoginPage = () => {
             register={register}
             errors={errors}
           />
-
-          {isLoading && <LoadingBack />}
         </ContainerLogin>
       </motion.div>
     </Background>
