@@ -16,14 +16,14 @@ export interface iContentModal {
 
 const TechProvider = ({ children }: iDefaultContextProps) => {
   const [techList, setTechList] = useState<iTech[]>([]);
-
+  
   const [isActiveModalAdd, setIsActiveModalAdd] = useState(false);
 
   const [contentModal, setContentModal] = useState<iTech | null>(null);
 
   useEffect(() => {
     const userToken = window.localStorage.getItem('userToken');
-
+  
     (async () => {
       if (userToken) {
         api.defaults.headers.authorization = `Bearer ${userToken}`;

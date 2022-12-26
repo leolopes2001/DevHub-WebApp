@@ -36,13 +36,13 @@ export const ModalEditTech = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (formData) => {
+  const onSubmit = async (formData) => {
     const submitter = window.event.submitter.name;
 
     const id = contentModal?.id;
 
     try {
-      api.put(`/users/techs/${id}`, formData);
+      await api.put(`/users/techs/${id}`, formData);
 
       if (submitter === 'edit') {
         setTechList((oldTechList) => [
@@ -55,7 +55,7 @@ export const ModalEditTech = () => {
 
         toast.success('Alterações salvas!');
       } else if (submitter === 'delete') {
-        api.delete(`/users/techs/${contentModal?.id}`);
+        await api.delete(`/users/techs/${contentModal?.id}`);
 
         setTechList((oldTechList) => [
           ...oldTechList.filter((tech) => tech.id !== id),
@@ -66,7 +66,6 @@ export const ModalEditTech = () => {
       }
     } catch (err) {
       toast.error('Verifique os dados e tente novamente!');
-      console.log(err);
     }
   };
   return (
