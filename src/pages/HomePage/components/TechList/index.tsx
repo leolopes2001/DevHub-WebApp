@@ -1,4 +1,3 @@
-
 import { useTech } from '../../../../contexts/TechProvider/TechProvider';
 import { ListStyled, EmptyLi } from './style';
 

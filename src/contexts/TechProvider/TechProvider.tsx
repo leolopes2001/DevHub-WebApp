@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { iDefaultContextProps } from '../../@types/types';
+import api from '../../service/api';
 
 import { getDataUser, iTech } from '../../service/getDataUser';
 
@@ -21,13 +22,19 @@ const TechProvider = ({ children }: iDefaultContextProps) => {
   const [contentModal, setContentModal] = useState<iTech | null>(null);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { techs } = await getDataUser();
+    const userToken = window.localStorage.getItem('userToken');
 
-        setTechList(techs);
-      } catch (error) {
-        console.log(error);
+    (async () => {
+      if (userToken) {
+        api.defaults.headers.authorization = `Bearer ${userToken}`;
+
+        try {
+          const { techs } = await getDataUser();
+
+          setTechList(techs);
+        } catch (error) {
+          console.log(error);
+        }
       }
     })();
   }, []);

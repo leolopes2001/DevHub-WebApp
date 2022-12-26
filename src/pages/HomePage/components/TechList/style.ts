@@ -14,8 +14,9 @@ export const ListStyled = styled.ul`
   flex-direction: column;
   gap: 1rem;
   margin-top: 29px;
-  overflow-x: scroll;
+  overflow-y: scroll;
   position: relative;
+  
 `;
 
 export const EmptyLi = styled.li`

@@ -5,13 +5,13 @@ import {
   FieldErrorsImpl,
 } from 'react-hook-form';
 
-
 import { iFormRegister } from '../../../../contexts/AuthProvider/types';
 import { Form } from './style';
 import { BoxInput } from './BoxInput';
 import { TitleStyled } from '../../../../components/Title';
 import { TextStyled } from '../../../../components/Text';
 import { ButtonStyled } from '../../../../components/Button';
+import { BoxSelectModule } from './BoxSelectModule';
 
 interface iRegisterFormProps {
   variant: 'register';
@@ -25,7 +25,11 @@ export const FormRegister = (props: iRegisterFormProps) => {
   const { variant, handleSubmit, registerUser, errors, register } = props;
 
   return (
-    <Form variant={variant} onSubmit={handleSubmit(registerUser)}>
+    <Form
+      variant={variant}
+      onSubmit={handleSubmit(registerUser)}
+      noValidate={false}
+    >
       <TitleStyled variant='title1' tag='h3'>
         Crie sua conta
       </TitleStyled>
@@ -85,6 +89,8 @@ export const FormRegister = (props: iRegisterFormProps) => {
         register={register}
         errors={errors}
       />
+
+      <BoxSelectModule register={register} defaultValue='Primeiro Modulo' />
 
       <ButtonStyled variant='register' type='submit'>
         Cadastrar

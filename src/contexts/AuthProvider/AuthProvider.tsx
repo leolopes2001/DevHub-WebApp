@@ -55,9 +55,7 @@ function AuthProvider({ children }: iDefaultContextProps) {
     })();
   }, []);
 
-  const loginUser: SubmitHandler<iFormLogin> = async (
-    formData
-  ) => {
+  const loginUser: SubmitHandler<iFormLogin> = async (formData) => {
     setIsLoading(true);
 
     try {
@@ -82,11 +80,9 @@ function AuthProvider({ children }: iDefaultContextProps) {
     }
   };
 
-  const registerUser: SubmitHandler<iFormRegister> = async (
-    formData
-  ) => {
+  const registerUser: SubmitHandler<iFormRegister> = async (formData) => {
     try {
-      await api.post('/users', formData);
+      await api.post('users', formData);
       navigate('/login');
       toast.success('Registro realizado com suceeso!');
     } catch (err) {
